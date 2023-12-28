@@ -1,0 +1,66 @@
+Test scenarios:
+---------------
+
+Feature : one complete order 
+
+SCENARIO: drink is available
+GIVEN   : size and and extras are given
+WHEN    : the user requests a drink
+THEN    : the drink is added to final_order_list
+
+-- test_single_shot_espresso_with_milk
+-- test_single_shot_espresso_with_sugar
+
+
+Feature : one order with missing information 
+
+SCENARIO: drink is available
+GIVEN   : size and and extras are NOT given
+WHEN    : the user requests a drink
+THEN    : the drink is not added to final_order_list
+AND     : assistant asks for more details (size or extras)
+
+-- test_single_shot_espresso_no_other_info
+
+
+Feature : Don't accept not available items 
+
+SCENARIO: drink is not available
+GIVEN   : any size or extras
+WHEN    : the user requests a drink
+THEN    : the drink is not added to final_order_list
+AND     : assistant informs the user about unavailabilty of the item
+
+-- test_not_available_item
+
+
+Feature : Order Submission and Confirmation / Cancelation
+
+SCENARIO: Confirming the order
+GIVEN   : A completed order
+WHEN    : The user confirms the order
+THEN    : The order is submitted, and a confirmation message is provided
+
+-- test_add_item_and_submit_order
+-- test_add_item_and_cancel_order
+
+
+Feature : Customization of Existing Orders
+
+SCENARIO: Modifying an existing order
+GIVEN   : An existing order with one or more drinks
+WHEN    : The user requests to modify the order by adding or removing items
+THEN    : The order is modified accordingly
+
+-- test_add_item_with_missing_info
+
+
+Feature : multiple orders
+
+SCENARIO: adding two orders to the cart
+GIVEN   : both items are available
+AND     : all the necesssary extra infos are given
+WHEN    : user requests
+THEN    : both items will be added to the final_order_list
+
+-- test_add_multiple_available_orders
